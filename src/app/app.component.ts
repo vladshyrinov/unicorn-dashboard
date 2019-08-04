@@ -14,9 +14,9 @@ export class AppComponent {
   }
 
   triggerService() {
-    this._searchService.search("angular2").subscribe((res) => {
-      console.log("API RESULT", res);
-    });
+    // this._searchService.search("angular2").subscribe((res) => {
+    //   console.log("API RESULT", res);
+    // });
   }
 
 }
