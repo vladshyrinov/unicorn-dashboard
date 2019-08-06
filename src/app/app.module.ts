@@ -1,30 +1,40 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppComponent } from './app.component';
-import {SearchService} from "./core/services/search.service";
-import {AppRoutingModule} from "./app.routing.module";
+import { SearchService } from './services/search.service';
+import { AppRoutingModule } from './app.routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import {LayoutModule} from "./core/layout/layout.module";
+import { LayoutModule } from './core/layout/layout.module';
 import { SearchComponent } from './search/search.component';
+import { InfoContainerComponent } from './dashboard/info-container/info-container.component';
+import { InfoEntryComponent } from './dashboard/info-entry/info-entry.component';
+import { WeatherDataService } from './services/weather-data.service';
+import { weatherInterceptor } from './services/weather.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    SearchComponent
+    SearchComponent,
+    InfoContainerComponent,
+    InfoEntryComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
 
     LayoutModule,
     AppRoutingModule
   ],
-  providers: [SearchService],
+  providers: [
+    weatherInterceptor,
+    SearchService,
+    WeatherDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,8 +1,8 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { SearchService } from './search.service';
-import {HttpModule} from "@angular/http";
-import {APP_BASE_HREF} from "@angular/common";
+import {HttpModule} from '@angular/http';
+import {APP_BASE_HREF} from '@angular/common';
 
 describe('SearchService', () => {
   beforeEach(() => {

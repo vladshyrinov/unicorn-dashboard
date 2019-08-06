@@ -1,9 +1,9 @@
-import {IMenuItem, IMenuActionItem} from "./menu.interfaces";
-import {Component} from "@angular/core";
+import {IMenuItem, IMenuActionItem} from './menu.interfaces';
+import {Component} from '@angular/core';
 
 @Component({
-  selector: "ae-main-navigation",
-  templateUrl: "./menu.component.html"
+  selector: 'app-main-navigation',
+  templateUrl: './menu.component.html'
 })
 export class MenuComponent {
 
@@ -13,21 +13,23 @@ export class MenuComponent {
 
     constructor() {
 
-        this.menuItems = [{
-            title: "Dashboard",
-            icon: "home",
-            state: "dashboard"
-        },{
-          title: "Search",
-          icon: "search",
-          state: "search"
+        this.menuItems = [
+        {
+          title: 'Dashboard',
+          icon: 'home',
+          state: 'dashboard'
+        },
+        {
+          title: 'Search',
+          icon: 'search',
+          state: 'search'
         }];
 
         this.actionItems = [{
-            link: "https://wiki.redmedical.de/x/gIE4",
-            icon1: "square",
-            icon2: "phone",
-            title: "Hilfe"
+            link: 'https://wiki.redmedical.de/x/gIE4',
+            icon1: 'square',
+            icon2: 'phone',
+            title: 'Hilfe'
         }];
 
     }

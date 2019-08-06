@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {SearchService} from "./core/services/search.service";
+import {SearchService} from './services/search.service';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +14,8 @@ export class AppComponent {
   }
 
   triggerService() {
-    // this._searchService.search("angular2").subscribe((res) => {
-    //   console.log("API RESULT", res);
+    // this._searchService.search('angular2').subscribe((res) => {
+    //   console.log('API RESULT', res);
     // });
   }
 
