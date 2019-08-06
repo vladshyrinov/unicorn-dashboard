@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IResultItem } from 'app/models/result-item.interface';
-import resultItemGuard from 'app/helpers/result-item-type-guard';
+import { IResultItem } from '../../models/result-item.interface';
+import { ResultItemType } from '../../models/result-item-type.enum';
+import resultItemGuard from '../../helpers/result-item-type-guard';
 
 @Component({
   selector: 'app-info-entry',
@@ -9,22 +10,20 @@ import resultItemGuard from 'app/helpers/result-item-type-guard';
 })
 export class InfoEntryComponent implements OnInit {
 
-  // resultItem: IResultItem;
-  resultItemType: string; 
+  _resultItem: IResultItem;
+  resultItemType: ResultItemType; 
 
-  @Input() resultItem;
-  // set resultItem(item: IResultItem) {
-  //   console.log(item);
-  //   this.resultItem = item;
-  //   this.resultItemType = resultItemGuard(item);
-  // }
-
-  constructor() { 
-    console.log('item');
+  get resultItem(): IResultItem {
+    return this._resultItem;
   }
 
-  ngOnInit() {
-
+  @Input('resultItem')
+  set resultItem(item: IResultItem) {
+    this._resultItem = item;
+    this.resultItemType = resultItemGuard(item);
   }
 
+  constructor() { }
+
+  ngOnInit() { }
 }

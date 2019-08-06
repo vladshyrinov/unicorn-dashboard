@@ -1,8 +1,10 @@
+import { ResultItemType } from '../models/result-item-type.enum';
+
 const resultItemGuard =  (arg: any) => {
     if(arg.Temp_A !== undefined) {
-        return 'weather-item';
+        return ResultItemType.WEATHER;
     } else {
-        return 'search-item';
+        return ResultItemType.SEARCH;
     }
 }
 
