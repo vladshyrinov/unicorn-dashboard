@@ -1,7 +1,14 @@
-<article>
+<article *ngIf="resultItemType===5">
   <span>{{resultItem.Temp_A}}</span>
   <br>
   <span>{{resultItem.Datum}}</span>
+</article>
+
+<article *ngIf="resultItemType===10">
+  <img class="avatar" [src]="resultItem.owner.profile_image" [alt]="resultItem.owner.display_name">
+  <br>
+  <p>{{resultItem.title}}</p>
+  <span>{{creationDate}}</span>
 </article>
 
 
@@ -15,3 +22,29 @@
     Temp_A: number;
     Wind: number;
     Zeit: string; -->
+
+
+    <!-- "tags": [
+    "typescript",
+    "cucumber",
+    "cucumberjs"
+],
+"owner": {
+    "reputation": 3313,
+    "user_id": 4695271,
+    "user_type": "registered",
+    "accept_rate": 69,
+    "profile_image": "https://i.stack.imgur.com/fNlXZ.png?s=128&g=1",
+    "display_name": "x80486",
+    "link": "https://stackoverflow.com/users/4695271/x80486"
+},
+"is_answered": false,
+"view_count": 23,
+"answer_count": 1,
+"score": 0,
+"last_activity_date": 1565059312,
+"creation_date": 1564888888,
+"last_edit_date": 1565059312,
+"question_id": 57343544,
+"link": "https://stackoverflow.com/questions/57343544/typescript-module-resolution-doesnt-quite-work-with-cucumber-js",
+"title": "TypeScript Module Resolution doesn&#39;t quite work with Cucumber-js" -->

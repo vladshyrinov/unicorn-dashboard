@@ -1,5 +1,5 @@
 @mixin opacity ($opacity: 0.5) {
-  opacity:    $opacity;
+  opacity: $opacity;
 }
 
 @mixin border-radius ($radius: 5px) {

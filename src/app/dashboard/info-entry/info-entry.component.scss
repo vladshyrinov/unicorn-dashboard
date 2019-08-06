@@ -1,0 +1,13 @@
+@import '../../../assets/sass/modules/mixins';
+@import '../../../assets/sass/modules/variables';
+
+article {
+    background: $white;
+    margin-bottom: 15px;
+    @include border-radius;
+    @include box-shadow(0px, 0px, 5px, 0.25);
+
+    .avatar {
+        width: 50px;
+    }
+}

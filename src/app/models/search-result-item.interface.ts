@@ -1,4 +1,4 @@
-import { IResultItem } from "./result-item.interface";
+import { IResultItem } from './result-item.interface';
 
 interface ISearchItemOwner {
     reputation: number;

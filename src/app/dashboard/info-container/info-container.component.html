@@ -1,4 +1,4 @@
-<section>
-  <div (click)="setBell()">Bell</div>
-  <app-info-entry *ngFor="let resultItem of weatherData" [resultItem]="resultItem"></app-info-entry>
+<section *ngIf="resultData">
+  <div *ngIf="containerType === 2" (click)="setBell()">Bell</div>
+  <app-info-entry *ngFor="let resultItem of resultData" [resultItem]="resultItem"></app-info-entry>
 </section>

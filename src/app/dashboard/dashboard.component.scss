@@ -1,0 +1,14 @@
+@import '../../assets/sass/modules/variables';
+
+.dashboard-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+@media(max-width: $screen-sm-max) {
+    
+    .dashboard-wrapper {
+        flex-direction: column;
+        justify-content: center;
+    }
+}

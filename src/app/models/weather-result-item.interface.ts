@@ -1,4 +1,4 @@
-import { IResultItem } from "./result-item.interface";
+import { IResultItem } from './result-item.interface';
 
 export interface IWeatherResultItem extends IResultItem {
     Datum: string;

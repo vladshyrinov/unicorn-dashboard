@@ -1,4 +1,4 @@
-import { ISearchResultItem } from "./search-result-item.interface";
+import { ISearchResultItem } from './search-result-item.interface';
 
 export interface ISearchResult {
     items: ISearchResultItem[];

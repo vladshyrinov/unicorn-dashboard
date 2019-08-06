@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { IResultItem } from '../../models/result-item.interface';
 import { ResultItemType } from '../../models/result-item-type.enum';
 import resultItemGuard from '../../helpers/result-item-type-guard';
+import { ISearchResultItem } from '../../models/search-result-item.interface';
 
 @Component({
   selector: 'app-info-entry',
@@ -10,17 +11,23 @@ import resultItemGuard from '../../helpers/result-item-type-guard';
 })
 export class InfoEntryComponent implements OnInit {
 
-  _resultItem: IResultItem;
-  resultItemType: ResultItemType; 
+  private _resultItem: IResultItem;
+  public resultItemType: ResultItemType;
 
-  get resultItem(): IResultItem {
+  public get resultItem(): IResultItem {
     return this._resultItem;
   }
 
   @Input('resultItem')
-  set resultItem(item: IResultItem) {
+  public set resultItem(item: IResultItem) {
     this._resultItem = item;
     this.resultItemType = resultItemGuard(item);
+  }
+
+  public get creationDate(): string {
+    const searchResultItem = <ISearchResultItem>this._resultItem;
+    const date = new Date(searchResultItem.creation_date * 1000);
+    return date.toLocaleString();
   }
 
   constructor() { }
