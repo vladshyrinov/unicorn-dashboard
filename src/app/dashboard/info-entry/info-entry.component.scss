@@ -2,10 +2,18 @@
 @import '../../../assets/sass/modules/variables';
 
 article {
-    background: $white;
-    margin-bottom: 15px;
     @include border-radius;
     @include box-shadow(0px, 0px, 5px, 0.25);
+    cursor: pointer;
+    background: $white;
+    margin-bottom: 15px;
+    @include scale(1.0);
+    // @include transition; 
+    transition: all linear 0.1s;
+
+    &:hover {
+        @include scale(1.01);
+    }
 
     .avatar {
         width: 50px;
