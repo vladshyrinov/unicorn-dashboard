@@ -1,16 +1,53 @@
 <article class="entry" *ngIf="resultItemType===5">
-  <div class="entry-weather">
-    <div class="entry-temperature">{{resultItem.Temp_A}} °C</div>
-    <div class="entry-wind">
-      {{resultItem.Wind}} m/s
-      <br>
-      <div>
-        Wind Richtung:  
-        <i class="wind-pointer" [ngStyle]="{'transform': 'rotate(' + (resultItem.Richtung - 135) + 'deg)'}"></i>
+  <div class="entry-header">
+    <b class="header-date">{{resultItem.Datum}}</b>
+  </div>
+  <div class="entry-details">
+    <div class="details-area">
+      <div class="details-item">
+        <div class="item-info">
+          <span class="info-title">Wind</span>
+          <br>
+          <span>{{resultItem.Wind}} km/h</span>
+        </div>
+        <figure class="item-img">
+          <img src="../../../assets/images/dashboard/wind.png" alt="wind">
+        </figure>
+      </div>
+      <div class="details-item">
+        <div class="item-info">
+          <span class="info-title">Temperature</span>
+          <br>
+          <span>{{resultItem.Temp_A}} °C</span>
+        </div>
+        <figure class="item-img">
+          <img src="../../../assets/images/dashboard/temperature.png" alt="temperature">
+        </figure>
+      </div>
+    </div>
+    <div class="details-area">
+      <div class="details-item">
+        <div class="item-info">
+          <span class="info-title">Feuchte</span>
+          <br>
+          <span>{{resultItem.Feuchte_A}} %</span>
+        </div>
+        <figure class="item-img">
+          <img src="../../../assets/images/dashboard/humidity.png" alt="humidity">
+        </figure>
+      </div>
+      <div class="details-item">
+        <div class="item-info">
+          <span class="info-title">Luftdruck</span>
+          <br>
+          <span>{{resultItem.Luftdruck}} mb</span>
+        </div>
+        <figure class="item-img">
+          <img src="../../../assets/images/dashboard/pressure.png" alt="pressure">
+        </figure>
       </div>
     </div>
   </div>
-  <span class="entry-date">{{resultItem.Datum}} {{resultItem.Zeit}}</span>
 </article>
 
 <article class="entry" *ngIf="resultItemType===10">
@@ -19,44 +56,10 @@
       <img class="entry-avatar" [src]="resultItem.owner.profile_image" [alt]="resultItem.owner.display_name">
       <p class="entry-question">{{htmlDecode(resultItem.title)}}</p>
     </div>
-    <span class="entry-date">{{creationDate}}</span>
+    <figure class="entry-views">
+      {{resultItem.view_count}}
+      <img src="../../../assets/images/dashboard/views.png" alt="views">
+    </figure>  
+    <b class="entry-date">{{creationDate}}</b>
   </a>
 </article>
-
-
-    <!-- Datum: string;
-    Feuchte_A: number;
-    Helligkeit: number;
-    Luftdruck: number;
-    Regen: number;
-    Richtung: number;
-    Temp_3: number;
-    Temp_A: number;
-    Wind: number;
-    Zeit: string; -->
-
-
-    <!-- "tags": [
-    "typescript",
-    "cucumber",
-    "cucumberjs"
-],
-"owner": {
-    "reputation": 3313,
-    "user_id": 4695271,
-    "user_type": "registered",
-    "accept_rate": 69,
-    "profile_image": "https://i.stack.imgur.com/fNlXZ.png?s=128&g=1",
-    "display_name": "x80486",
-    "link": "https://stackoverflow.com/users/4695271/x80486"
-},
-"is_answered": false,
-"view_count": 23,
-"answer_count": 1,
-"score": 0,
-"last_activity_date": 1565059312,
-"creation_date": 1564888888,
-"last_edit_date": 1565059312,
-"question_id": 57343544,
-"link": "https://stackoverflow.com/questions/57343544/typescript-module-resolution-doesnt-quite-work-with-cucumber-js",
-"title": "TypeScript Module Resolution doesn&#39;t quite work with Cucumber-js" -->

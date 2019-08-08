@@ -16,7 +16,6 @@ export class SearchService {
 
     constructor(private http: HttpClient) { }
 
-    // search(keyword: string): Observable<> {
     search(keyword: string): Observable<any> {
         const arr = [
             {
@@ -273,17 +272,19 @@ export class SearchService {
                 "title": "TypeScript Module Resolution doesn&#39;t quite work with Cucumber-js"
             }
         ];
+        
+        // arr.sort((a, b) => b.creation_date - a.creation_date);
 
-        return of(arr);
-        // return this.http.get(this.apiUrl + keyword).pipe(
-        //     map((data: ISearchResult) => {
-        //         console.log('API USAGE: ' + data.quota_remaining + ' of ' + data.quota_max + ' requests available');
-        //         return data.items;
-        //     }),
-        //     catchError((err: Error) => {
-        //         console.log(err.message);
-        //         return Observable.of(null);
-        //     })
-        // );
+        // return of(arr);
+        return this.http.get(this.apiUrl + keyword).pipe(
+            map((data: ISearchResult) => {
+                console.log('API USAGE: ' + data.quota_remaining + ' of ' + data.quota_max + ' requests available');
+                return data.items.sort((a, b) => b.creation_date - a.creation_date);
+            }),
+            catchError((err: Error) => {
+                console.log(err.message);
+                return of(null);
+            })
+        );
     };
 }

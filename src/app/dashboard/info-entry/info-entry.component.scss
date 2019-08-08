@@ -13,6 +13,43 @@
     @include scale(1.0);
     @include transition(all, linear, 0.1s); 
 
+    &-header {
+        position: relative;
+        padding-bottom: 10px;
+
+        .header-date {
+            font-size: 20px;
+        }
+    }
+
+    .details-area {
+        display: flex;
+        border-top: 1px solid $blue-bayoux;
+
+        .details-item {
+            display: flex;
+            justify-content: space-between;
+            width: 50%;
+            min-height: 40px;
+            padding: 5px;
+
+
+            &:nth-child(2n) {
+                border-left: 1px solid $blue-bayoux;
+            }
+
+            .item-img {
+                img {
+                    width: 30px;
+                }
+            }
+
+            .info-title {
+                font-size: 12px;
+            }
+        }
+    }
+
     &-target {
         display: flex;
     }
@@ -20,6 +57,7 @@
     &-link {
         display: block;
         color: inherit;
+        min-height: 150px;
     }
 
     &-avatar {
@@ -40,28 +78,17 @@
         right: 5px;
     }
 
+    &-views {
+        position: absolute;
+        bottom: 5px;
+        left: 5px;
+
+        img {
+            width: 20px;
+        }
+    }
+
     &:hover {
         @include scale(1.01);
     }
-
-    &-weather {
-        display: flex;
-        justify-content: space-around;
-    }
-
-    &-temperature,
-    &-wind {
-        font-weight: bold;
-        font-size: 30px;
-    }
-
-    .wind-pointer {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        border: solid;
-        border-width: 0 5px 5px 0;
-    }
-}
-
-    
+}   

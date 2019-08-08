@@ -72,7 +72,7 @@ export class InfoContainerComponent implements OnInit {
   public setBell(): void {
     if (!this.bellSubscribed) {
 
-      this.bellSubscription = timer(0, 1000).pipe(
+      this.bellSubscription = timer(0, 60000).pipe(
         switchMap(() => this.getSearchData('angular2'))
         ).subscribe((data: any) => {
           this.resultData = data;
