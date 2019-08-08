@@ -1,0 +1,7 @@
+@import '../../../../assets/sass/modules/variables';
+
+@media(max-width: $screen-md-max) {
+    .topbar {
+        display: none;
+    }
+}

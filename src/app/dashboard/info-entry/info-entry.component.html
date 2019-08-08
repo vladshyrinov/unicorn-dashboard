@@ -1,14 +1,26 @@
-<article *ngIf="resultItemType===5">
-  <span>{{resultItem.Temp_A}}</span>
-  <br>
-  <span>{{resultItem.Datum}}</span>
+<article class="entry" *ngIf="resultItemType===5">
+  <div class="entry-weather">
+    <div class="entry-temperature">{{resultItem.Temp_A}} °C</div>
+    <div class="entry-wind">
+      {{resultItem.Wind}} m/s
+      <br>
+      <div>
+        Wind Richtung:  
+        <i class="wind-pointer" [ngStyle]="{'transform': 'rotate(' + (resultItem.Richtung - 135) + 'deg)'}"></i>
+      </div>
+    </div>
+  </div>
+  <span class="entry-date">{{resultItem.Datum}} {{resultItem.Zeit}}</span>
 </article>
 
-<article *ngIf="resultItemType===10">
-  <img class="avatar" [src]="resultItem.owner.profile_image" [alt]="resultItem.owner.display_name">
-  <br>
-  <p>{{resultItem.title}}</p>
-  <span>{{creationDate}}</span>
+<article class="entry" *ngIf="resultItemType===10">
+  <a class="entry-link" [href]="resultItem.link" target="_blank">
+    <div class="entry-target">
+      <img class="entry-avatar" [src]="resultItem.owner.profile_image" [alt]="resultItem.owner.display_name">
+      <p class="entry-question">{{htmlDecode(resultItem.title)}}</p>
+    </div>
+    <span class="entry-date">{{creationDate}}</span>
+  </a>
 </article>
 
 

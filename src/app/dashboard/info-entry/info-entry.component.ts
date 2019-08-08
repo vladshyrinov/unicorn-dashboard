@@ -33,4 +33,10 @@ export class InfoEntryComponent implements OnInit {
   constructor() { }
 
   ngOnInit() { }
+
+  public htmlDecode(input) {
+    const e = document.createElement('textarea');
+    e.innerHTML = input;
+    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+  }
 }

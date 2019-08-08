@@ -24,18 +24,15 @@ export class InfoContainerComponent implements OnInit {
   public resultData: IResultItem[];
   public bellSubscription: Subscription;
   public bellSubscribed = false;
+  public bellInscription = 'OFF';
 
-  @Input() private containerType: number;
+  @Input() public container: any;
 
   constructor(private searchService: SearchService,
-          private weatherDataService: WeatherDataService) {
-            console.log('isntance');
-           }
+          private weatherDataService: WeatherDataService) {}
 
   ngOnInit() {
-    console.log(this.containerType);
-
-    this.requestResultData(this.containerType).subscribe((data: IResultItem[]) => {
+    this.requestResultData(this.container.type).subscribe((data: IResultItem[]) => {
       this.resultData = data;
 
       console.log('info-container: ', this.resultData);
@@ -87,6 +84,7 @@ export class InfoContainerComponent implements OnInit {
     }
 
     this.bellSubscribed = !this.bellSubscribed;
+    this.bellInscription = this.bellSubscribed ? 'ON' : 'OFF';
     console.log('dzin', this.bellSubscribed);
     console.log(this.bellSubscription);
   }

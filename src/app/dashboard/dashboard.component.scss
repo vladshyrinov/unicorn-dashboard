@@ -5,7 +5,7 @@
     justify-content: space-around;
 }
 
-@media(max-width: $screen-sm-max) {
+@media(max-width: $screen-md-max) {
     
     .dashboard-wrapper {
         flex-direction: column;

@@ -1,4 +1,9 @@
-<section *ngIf="resultData">
-  <div *ngIf="containerType === 2" (click)="setBell()">Bell</div>
-  <app-info-entry *ngFor="let resultItem of resultData" [resultItem]="resultItem"></app-info-entry>
+<section class="info-container" *ngIf="resultData">
+  <h2>{{container.title}}</h2>
+  <div class="update-bell" *ngIf="container.type === 2" (click)="setBell()">
+    Every 1 min update: {{bellInscription}} 
+  </div>
+  <div class="info-entries">
+    <app-info-entry *ngFor="let resultItem of resultData" [resultItem]="resultItem"></app-info-entry>
+  </div>
 </section>

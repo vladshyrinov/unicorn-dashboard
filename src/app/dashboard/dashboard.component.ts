@@ -7,6 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  containers = [
+    {
+      title: 'TypeScript',
+      type: 1
+    },
+    {
+      title: 'Angular2',
+      type: 2
+    },
+    {
+      title: 'Weather',
+      type: 3
+    }
+  ]
+
   constructor() { }
 
   ngOnInit() {

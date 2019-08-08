@@ -1,4 +1,18 @@
-section {
-    width: 90%;
-    margin: 0 auto;
+.info {
+    &-container {
+        position: relative;
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    &-entries {
+        padding-top: 40px;
+    }
+}
+
+.update-bell {
+   position: absolute; 
+   top: 10px;
+   right: 0;
+   cursor: pointer;
 }

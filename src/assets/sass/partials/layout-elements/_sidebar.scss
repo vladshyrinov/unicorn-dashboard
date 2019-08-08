@@ -113,15 +113,8 @@
 }
 
 @media screen and (max-width: $screen-sm-max) {
-    .pushed-right--mobile {
-        > .topbar,
-        > .main-content {
-            transform: translate3d($sidebar-width, 0, 0);
-        }
-
-        .main-content {
-            // position: fixed;
-        }
+    .sidebar {
+        display: none;
     }
 
     .sidebar--left--mobile--open {
