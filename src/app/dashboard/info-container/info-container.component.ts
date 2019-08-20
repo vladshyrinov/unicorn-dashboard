@@ -34,8 +34,6 @@ export class InfoContainerComponent implements OnInit {
   ngOnInit() {
     this.requestResultData(this.container.type).subscribe((data: IResultItem[]) => {
       this.resultData = data;
-
-      console.log('info-container: ', this.resultData);
     });
   }
 
@@ -53,7 +51,7 @@ export class InfoContainerComponent implements OnInit {
   }
 
   public getCombinedData(keyword: string): Observable<IResultItem[]> {
-    return forkJoin(this.getWeatherData(), this.getSearchData(keyword))
+    return forkJoin(this.getWeatherData(), this.getSearchData(keyword, 5))
     .pipe(
       map(([arr1, arr2]) => {
         return this.combineArrays(arr1, arr2);
@@ -65,8 +63,8 @@ export class InfoContainerComponent implements OnInit {
     return this.weatherDataService.getWeather();
   }
 
-  public getSearchData(keyword: string): Observable<any> {
-    return this.searchService.search(keyword);
+  public getSearchData(keyword: string, pageSize?: number): Observable<any> {
+    return this.searchService.search(keyword, pageSize);
   }
 
   public setBell(): void {
@@ -76,7 +74,6 @@ export class InfoContainerComponent implements OnInit {
         switchMap(() => this.getSearchData('angular2'))
         ).subscribe((data: any) => {
           this.resultData = data;
-          console.log(data);
         });
 
     } else {
@@ -85,23 +82,26 @@ export class InfoContainerComponent implements OnInit {
 
     this.bellSubscribed = !this.bellSubscribed;
     this.bellInscription = this.bellSubscribed ? 'ON' : 'OFF';
-    console.log('dzin', this.bellSubscribed);
-    console.log(this.bellSubscription);
   }
 
   private combineArrays(fArr: IWeatherResultItem[], sArr: ISearchResultItem[]): any[] {
     const combinedArr = [];
 
-    while (fArr.length || sArr.length) {
-      if (fArr.length) {
-        combinedArr.push(fArr.pop());
+    if (fArr && sArr) {
+      while (fArr.length || sArr.length) {
+        if (fArr.length) {
+          combinedArr.push(fArr.pop());
+        }
+  
+        if(sArr.length) {
+          combinedArr.push(sArr.pop());
+        }
       }
 
-      if(sArr.length) {
-        combinedArr.push(sArr.pop());
-      }
+      return combinedArr;
+    } else {
+      return null;
     }
 
-    return combinedArr;
   }
 }

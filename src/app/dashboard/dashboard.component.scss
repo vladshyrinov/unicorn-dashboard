@@ -1,14 +1,1 @@
-@import '../../assets/sass/modules/variables';
 
-.dashboard-wrapper {
-    display: flex;
-    justify-content: space-around;
-}
-
-@media(max-width: $screen-md-max) {
-    
-    .dashboard-wrapper {
-        flex-direction: column;
-        justify-content: center;
-    }
-}

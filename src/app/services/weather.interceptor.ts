@@ -38,13 +38,24 @@ export class WeatherInterceptor implements HttpInterceptor {
 
     chooseRandomizedWeather(weatherData: any[]): any[] {
         const maxIdx = weatherData.length - 1;
-        const weatherDataToReturn = new Array(this.entriesAmount);
+        const interimWeatherData = new Array(this.entriesAmount);
 
-        for (let i = 0; i < weatherDataToReturn.length; i++) {
-            weatherDataToReturn[i] = weatherData[Math.round(Math.random() * maxIdx)];
+        for (let i = 0; i < interimWeatherData.length; i++) {
+            interimWeatherData[i] = weatherData[Math.round(Math.random() * maxIdx)];
+            console.log(interimWeatherData[i].Datum);
         }
 
-        return weatherDataToReturn;
+        // console.log(interimWeatherData.slice().sort((a, b) => a.Wind = b.Wind));
+        // weatherDataToReturn.sort((a, b) => 
+        //     new Date(a.Datum).getTime() - new Date(b.Datum).getTime());
+
+        // console.log(weatherDataToReturn);
+
+        interimWeatherData.sort((a, b) => new Date(a.Datum.replace(/[.]/, ':')).getTime()
+            - new Date(b.Datum.replace(/[.]/, ':')).getTime());
+
+        return interimWeatherData.sort((a, b) => new Date(a.Datum.replace(/[.]/, ':')).getTime() 
+            - new Date(b.Datum.replace(/[.]/, ':')).getTime());
     }
 }
 

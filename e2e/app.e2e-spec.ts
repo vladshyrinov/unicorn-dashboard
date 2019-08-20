@@ -1,6 +1,6 @@
 import { UnicornMedicalPage } from './app.po';
 
-describe('unicorn-medical App', () => {
+xdescribe('unicorn-medical App', () => {
   let page: UnicornMedicalPage;
 
   beforeEach(() => {

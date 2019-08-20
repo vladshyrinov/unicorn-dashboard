@@ -51,15 +51,22 @@
 </article>
 
 <article class="entry" *ngIf="resultItemType===10">
-  <a class="entry-link" [href]="resultItem.link" target="_blank">
-    <div class="entry-target">
-      <img class="entry-avatar" [src]="resultItem.owner.profile_image" [alt]="resultItem.owner.display_name">
-      <p class="entry-question">{{htmlDecode(resultItem.title)}}</p>
+    <a class="entry-link" [href]="resultItem.link" target="_blank">
+      <div class="entry-target">
+        <img class="entry-avatar" [src]="resultItem.owner.profile_image" [alt]="resultItem.owner.display_name">
+        <p class="entry-question">{{htmlDecode(resultItem.title)}}</p>
+      </div>
+    </a>
+    <div>
+      <div class="views-info">
+        <figure class="entry-views">
+          {{resultItem.view_count}}
+          <img src="../../../assets/images/dashboard/views.png" alt="views">
+        </figure>  
+        <b class="entry-date">{{creationDate}}</b>
+      </div>
+      <ul class="entry-tags">
+        <li *ngFor="let tag of resultItem.tags">{{tag}}</li>
+      </ul>
     </div>
-    <figure class="entry-views">
-      {{resultItem.view_count}}
-      <img src="../../../assets/images/dashboard/views.png" alt="views">
-    </figure>  
-    <b class="entry-date">{{creationDate}}</b>
-  </a>
 </article>
