@@ -12,11 +12,11 @@ export class WeatherDataService {
 
   getWeather(entriesAmount?: number): Observable<IWeatherResultItem[]> {
     let params = new HttpParams();
-    
+
     if (entriesAmount) {
       params = params.append('entriesamount', `${entriesAmount}`);
     }
 
-    return this.http.get(this.apiUrl, {params}) as Observable<IWeatherResultItem[]>;
+    return this.http.get(this.apiUrl, { params }) as Observable<IWeatherResultItem[]>;
   }
 }

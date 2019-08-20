@@ -1,12 +1,16 @@
-<section class="info-container" *ngIf="resultData">
-  <h2>{{container.title}}</h2>
-  <div class="update-bell" *ngIf="container.type === 2" (click)="setBell()">
-    Every 1 min update: <span [ngClass]="{'green': bellInscription === 'ON'}">{{bellInscription}}</span> 
-  </div>
-  <div class="info-entries">
-    <app-info-entry *ngFor="let resultItem of resultData" [resultItem]="resultItem"></app-info-entry>
-  </div>
-</section>
-<section class="info-container" *ngIf="!resultData">
-  <p>Sorry, es gibt momentan keine verfügbare Daten</p>
-</section>
+<div class="container-wrapper">
+  <section class="info-container" *ngIf="resultData && dataAreLoaded">
+    <h2>{{container.title}}</h2>
+    <div class="update-bell" *ngIf="container.type === 2" (click)="setBell()">
+      Every 1 min update: <span [ngClass]="{'green': bellInscription === 'ON'}">{{bellInscription}}</span> 
+    </div>
+    <div class="info-entries">
+      <app-info-entry *ngFor="let resultItem of resultData" [resultItem]="resultItem"></app-info-entry>
+    </div>
+  </section>
+  <section class="info-container" *ngIf="!resultData && dataAreLoaded">
+    <p>Sorry, es gibt momentan keine verfügbare Daten</p>
+  </section>
+  <app-spinner *ngIf="!dataAreLoaded"></app-spinner>
+</div>
+

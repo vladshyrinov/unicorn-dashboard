@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { timer } from 'rxjs/observable/timer';
 import { switchMap, mergeMap, map } from 'rxjs/operators';
 import { Observable, Subscribable } from 'rxjs/Observable';
-import {forkJoin} from 'rxjs/observable/forkJoin';
+import { forkJoin } from 'rxjs/observable/forkJoin';
 
 import { WeatherDataService } from '../../services/weather-data.service';
 import { SearchService } from '../../services/search.service';
@@ -25,15 +25,17 @@ export class InfoContainerComponent implements OnInit {
   public bellSubscription: Subscription;
   public bellSubscribed = false;
   public bellInscription = 'OFF';
+  public dataAreLoaded = false;
 
   @Input() public container: any;
 
   constructor(private searchService: SearchService,
-          private weatherDataService: WeatherDataService) {}
+    private weatherDataService: WeatherDataService) { }
 
   ngOnInit() {
     this.requestResultData(this.container.type).subscribe((data: IResultItem[]) => {
       this.resultData = data;
+      this.dataAreLoaded = true;
     });
   }
 
@@ -52,11 +54,11 @@ export class InfoContainerComponent implements OnInit {
 
   public getCombinedData(keyword: string): Observable<IResultItem[]> {
     return forkJoin(this.getWeatherData(), this.getSearchData(keyword, 5))
-    .pipe(
-      map(([arr1, arr2]) => {
-        return this.combineArrays(arr1, arr2);
-      })
-    );
+      .pipe(
+        map(([arr1, arr2]) => {
+          return this.combineArrays(arr1, arr2);
+        })
+      );
   }
 
   public getWeatherData(): Observable<IWeatherResultItem[]> {
@@ -72,9 +74,9 @@ export class InfoContainerComponent implements OnInit {
 
       this.bellSubscription = timer(0, 60000).pipe(
         switchMap(() => this.getSearchData('angular2'))
-        ).subscribe((data: any) => {
-          this.resultData = data;
-        });
+      ).subscribe((data: any) => {
+        this.resultData = data;
+      });
 
     } else {
       this.bellSubscription.unsubscribe();
@@ -92,8 +94,8 @@ export class InfoContainerComponent implements OnInit {
         if (fArr.length) {
           combinedArr.push(fArr.pop());
         }
-  
-        if(sArr.length) {
+
+        if (sArr.length) {
           combinedArr.push(sArr.pop());
         }
       }

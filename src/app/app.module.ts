@@ -14,6 +14,7 @@ import { InfoContainerComponent } from './dashboard/info-container/info-containe
 import { InfoEntryComponent } from './dashboard/info-entry/info-entry.component';
 import { WeatherDataService } from './services/weather-data.service';
 import { weatherInterceptor } from './services/weather.interceptor';
+import { SpinnerComponent } from './dashboard/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { weatherInterceptor } from './services/weather.interceptor';
     DashboardComponent,
     SearchComponent,
     InfoContainerComponent,
-    InfoEntryComponent
+    InfoEntryComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

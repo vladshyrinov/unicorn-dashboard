@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
       title: 'Weather',
       type: 3
     }
-  ]
+  ];
 
   constructor() { }
 

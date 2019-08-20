@@ -37,6 +37,6 @@ export class InfoEntryComponent implements OnInit {
   public htmlDecode(input) {
     const e = document.createElement('textarea');
     e.innerHTML = input;
-    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+    return e.childNodes.length === 0 ? '' : e.childNodes[0].nodeValue;
   }
 }

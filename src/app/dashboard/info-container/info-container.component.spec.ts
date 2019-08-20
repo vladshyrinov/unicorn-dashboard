@@ -19,12 +19,12 @@ describe('InfoContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InfoContainerComponent ],
+      declarations: [InfoContainerComponent],
       imports: [HttpClientTestingModule],
       providers: [SearchService, WeatherDataService],
       schemas: [NO_ERRORS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -32,9 +32,9 @@ describe('InfoContainerComponent', () => {
     component = fixture.componentInstance;
     de = fixture.debugElement;
     ne = de.nativeElement;
-    
+
     searchService = TestBed.get(SearchService);
-    
+
     component.container = { title: 'Angular2', type: 2 };
     component.resultData = searchMock.items;
     searchSpy = spyOn(searchService, 'search').and.returnValue(of(searchMock.items));
@@ -53,14 +53,14 @@ describe('InfoContainerComponent', () => {
     let updateBell = de.query(By.css('.update-bell'));
     expect(updateBell).not.toBeNull();
 
-    component.container = {title: 'Weather', type: 3};
+    component.container = { title: 'Weather', type: 3 };
     fixture.detectChanges();
 
     updateBell = de.query(By.css('.update-bell'));
     expect(updateBell).toBeNull();
   });
 
-  it('should set the bell and change inscription from OFF to ON and back for angular 2 container', () => {    
+  it('should set the bell and change inscription from OFF to ON and back for angular 2 container', () => {
     const updateBell = de.query(By.css('.update-bell'));
     const updateBellInsSpan = updateBell.query(By.css('span'));
     expect(component.bellInscription).toEqual('OFF');
@@ -78,12 +78,12 @@ describe('InfoContainerComponent', () => {
 
   });
 
-  // it('should show sorry message if there was no data', () => {
-  //   component.resultData = null;
-  //   fixture.detectChanges();
+  it('should show sorry message if there was no data', () => {
+    component.resultData = null;
+    fixture.detectChanges();
 
-  //   const messageElem = de.query(By.css('.info-container p'));
-  //   expect(messageElem).toContain('Sorry, es gibt momentan keine verfügbare Daten');
-  // });
-  
+    const messageElem = de.query(By.css('.info-container p'));
+    expect(messageElem.nativeElement.innerText).toEqual('Sorry, es gibt momentan keine verfügbare Daten');
+  });
+
 });

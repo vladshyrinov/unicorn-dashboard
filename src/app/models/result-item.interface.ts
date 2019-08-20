@@ -1,1 +1,5 @@
-export interface IResultItem {}
+export interface IResultItem {
+
+}
+
+
